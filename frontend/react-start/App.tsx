@@ -1,15 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import UserForm from './components/UserForm';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+
+import UserForm from './components/LoginForm';
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#0077b5',
+  },
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Please sign into your RedCat account</Text>
-      <View style={styles.padding} />
-      <UserForm />
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider theme={theme}>
+      <View style={styles.container}>
+        <Text>Please sign into your RedCat account</Text>
+        <View style={styles.padding} />
+        <UserForm />
+        <StatusBar style="auto" />
+      </View>
+    </PaperProvider>
   );
 }
 

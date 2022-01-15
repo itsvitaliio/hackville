@@ -1,18 +1,47 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { TextInput, Button } from 'react-native-paper'
+import axios from 'axios'
 
-const sendLogin = () => {
-
-}
-
-const sendCreateAccount = () => {
-
-}
+const baseUrl = ''
 
 const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
+
+  const sendLogin = async () => {
+    // const url = `${baseUrl}/api/users/1`
+    // const res = await axios.get(url)
+    // console.log(res.data)
+  }
+
+  const sendCreateAccount = async () => {
+    // BASIC
+    // const url = `${baseUrl}/api/users/1`
+    // const res = await axios.get(url)
+    // console.log(res.data)
+
+    // POST CALL
+    // axios.post('/user', {
+    //   firstName: 'Fred',
+    //   lastName: 'Flintstone'
+    // })
+    //   .then(function (response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+
+    // GET CALL
+    // axios.get('/user?ID=12345')
+    //   .then(function (response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+  }
 
   return (
     <View style={styles.container}>
@@ -35,12 +64,12 @@ const LoginForm = () => {
         <Button
           children='Login'
           mode='contained'
-          onPress={() => sendLogin()}
+          onPress={async () => await sendLogin()}
         />
         <Button
           children='Create Account'
           mode='outlined'
-          onPress={() => sendCreateAccount()}
+          onPress={async () => await sendCreateAccount()}
         ></Button>
       </View>
     </View>
