@@ -15,14 +15,14 @@ users: UserCollection = UserCollection(db.return_db())
 async def home():
     return {'response': 'success'}
 
-@app.get('/api/register')
+@app.post('/api/register')
 async def register(request: Request):
     data = await request.json()
     user = User(data['username'], data['password'])
     users.create_user(user)
     return await request.json()
 
-@app.get('/api/login')
+@app.post('/api/login')
 async def login(request: Request):
     data = await request.json()
     if(users.verify_password(data['username'], data["password"])):
@@ -30,32 +30,32 @@ async def login(request: Request):
     else:
         return {"response": 400, "status": "Bad password"}
 
-@app.get('/api/plan/add')
+@app.post('/api/plan/add')
 async def register(request: Request):
     data = await request.json()
     plan = PlanEntry(data["name"], data["description"], data["type"], data["date"])
     await users.add_plan_entry(data["username"], plan)
-    return {'response': 400, "status": "Password is Ok"}
+    return {'response': 200}
 
-@app.get('/api/plan/update')
+@app.post('/api/plan/update')
 async def register(request: Request):
     data = await request.json()
     username = data["username"]
     index = data["index"]
     plan = PlanEntry(data["name"], data["description"], data["type"], data["date"])
     await users.update_plan_entry_name(index, username, plan)
-    return {'response': 'add'}
+    return {"response": 200}
 
-@app.get('/api/plan/read')
+@app.post('/api/plan/read')
 async def register(request: Request):
     data = await request.json()
     username = data["username"]
-    return {'response': 'add', "plans": users.get_plan_entries(username)["plan_entries"]}
+    return {"response": 200}
 
-@app.get('/api/plan/delete')
+@app.post('/api/plan/delete')
 async def register(request: Request):
     data = await request.json()
     username = data["username"]
     index = data["index"]
     await users.delete_plan_entry(username, index)
-    return {'response': 'add'}
+    return {"response": 200}
