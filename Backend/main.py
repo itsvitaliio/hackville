@@ -36,20 +36,24 @@ async def register(request: Request):
 @app.post('/api/login')
 async def login(request: Request):
     data = await request.json()
-    if(await users.verify_password(data['username'], data["password"])):
-        return {"response": 200, "status": "Password is OK"}
+    if(await users.get_user_by_username(data['username'])):
+        if(await users.verify_password(data['username'], data["password"])):
+            return {"response": 200, "status": "Password is OK"}
+        else:
+            return {"response": 400, "status": "Bad password"}    
     else:
-        return {"response": 400, "status": "Bad password"}
+        return {"response": 400, "status": "User does not exist"}    
+    
 
 @app.post('/api/plan/add')
-async def register(request: Request):
+async def add_plan(request: Request):
     data = await request.json()
     plan = PlanEntry(data["name"], data["description"], data["type"], data["date"])
     await users.add_plan_entry(data["username"], plan)
     return {'response': 200}
 
 @app.post('/api/plan/update')
-async def register(request: Request):
+async def update_plan(request: Request):
     data = await request.json()
     username = data["username"]
     index = data["index"]
@@ -58,13 +62,14 @@ async def register(request: Request):
     return {"response": 200}
 
 @app.post('/api/plan/read')
-async def register(request: Request):
+async def read_plans(request: Request):
     data = await request.json()
     username = data["username"]
-    return {"response": 200}
+    plans = await users.get_plan_entries(username)
+    return {"response": 200, "plans": plans}
 
 @app.post('/api/plan/delete')
-async def register(request: Request):
+async def delete_plans(request: Request):
     data = await request.json()
     username = data["username"]
     index = data["index"]
