@@ -46,14 +46,14 @@ async def login(request: Request):
     
 
 @app.post('/api/plan/add')
-async def register(request: Request):
+async def add_plan(request: Request):
     data = await request.json()
     plan = PlanEntry(data["name"], data["description"], data["type"], data["date"])
     await users.add_plan_entry(data["username"], plan)
     return {'response': 200}
 
 @app.post('/api/plan/update')
-async def register(request: Request):
+async def update_plan(request: Request):
     data = await request.json()
     username = data["username"]
     index = data["index"]
@@ -62,13 +62,13 @@ async def register(request: Request):
     return {"response": 200}
 
 @app.post('/api/plan/read')
-async def register(request: Request):
+async def read_plans(request: Request):
     data = await request.json()
     username = data["username"]
     return {"response": 200}
 
 @app.post('/api/plan/delete')
-async def register(request: Request):
+async def delete_plans(request: Request):
     data = await request.json()
     username = data["username"]
     index = data["index"]
