@@ -13,6 +13,7 @@ const LoginForm = () => {
     // const url = `${baseUrl}/api/users/1`
     // const res = await axios.get(url)
     // console.log(res.data)
+    // navigation.navigate('Modal')
   }
 
   const sendCreateAccount = async () => {
