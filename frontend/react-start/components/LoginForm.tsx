@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const baseUrl = 'http://localhost:8000/'
 
-const LoginForm = () => {
+const LoginForm = ({ navigation }: any) => {
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
 
@@ -13,7 +13,7 @@ const LoginForm = () => {
     // const url = `${baseUrl}/api/users/1`
     // const res = await axios.get(url)
     // console.log(res.data)
-    // navigation.navigate('Modal')
+    navigation.navigate('Home')
   }
 
   const sendCreateAccount = async () => {

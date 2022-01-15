@@ -36,7 +36,7 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <PaperProvider>
+        <PaperProvider theme={theme}>
           <Navigation />
           <StatusBar />
         </PaperProvider>
