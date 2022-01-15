@@ -9,20 +9,12 @@ import Navigation from './navigation';
 
 const theme = {
   ...DefaultTheme,
-  roundness: 2,
+  roundness: 5,
   colors: {
     ...DefaultTheme.colors,
     primary: '#0077b5',
   },
 }
-
-// export default function App() {
-//   return (
-//     <PaperProvider theme={theme}>
-//       <LoginScreen />
-//     </PaperProvider>
-//   );
-// }
 
 export default function App() {
   const isLoadingComplete = useCachedResources()
