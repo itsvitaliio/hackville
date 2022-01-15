@@ -36,10 +36,14 @@ async def register(request: Request):
 @app.post('/api/login')
 async def login(request: Request):
     data = await request.json()
-    if(await users.verify_password(data['username'], data["password"])):
-        return {"response": 200, "status": "Password is OK"}
+    if(await users.get_user_by_username(data['username'])):
+        if(await users.verify_password(data['username'], data["password"])):
+            return {"response": 200, "status": "Password is OK"}
+        else:
+            return {"response": 400, "status": "Bad password"}    
     else:
-        return {"response": 400, "status": "Bad password"}
+        return {"response": 400, "status": "User does not exist"}    
+    
 
 @app.post('/api/plan/add')
 async def register(request: Request):
