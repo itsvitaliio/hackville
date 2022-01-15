@@ -12,13 +12,14 @@ import AlanScreen from '../screens/AlanScreen'
 const Navigation = () => {
   return (
     <NavigationContainer
-      linking={LinkingConfiguration} >
+      linking={LinkingConfiguration}
+    >
       <RootNavigator />
     </NavigationContainer>
   )
 }
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const RootNavigator = () => {
   return (
@@ -28,7 +29,7 @@ const RootNavigator = () => {
       <Stack.Screen name='Timeline' component={TimelineScreen} />
       <Stack.Screen name='Alan' component={AlanScreen} />
     </Stack.Navigator>
-  );
+  )
 }
 
 export default Navigation

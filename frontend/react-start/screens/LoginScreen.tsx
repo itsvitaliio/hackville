@@ -1,14 +1,15 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
+
 import LoginForm from '../components/LoginForm'
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <Text>Please sign into your RedCat account</Text>
       <View style={styles.padding} />
-      <LoginForm />
+      <LoginForm componentNavigation={navigation}/>
       <StatusBar style="auto" />
     </View>
   )
