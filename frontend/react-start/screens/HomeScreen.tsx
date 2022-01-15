@@ -2,10 +2,10 @@ import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
 
-const AlanScreen = () => {
+const HomeScreen = () => {
   return (
-    <Text>AlanScreen</Text>
+    <Text>HomeScreen</Text>
   )
 }
 
-export default AlanScreen
+export default HomeScreen

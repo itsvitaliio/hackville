@@ -3,61 +3,56 @@ import { View, StyleSheet } from 'react-native'
 import { TextInput, Button } from 'react-native-paper'
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:8000/'
+const baseUrl = 'http://localhost:8000'
+const loginUrl = `${baseUrl}/api/login`
+const registerUrl = `${baseUrl}/api/register`
 
-const LoginForm = () => {
-  const [email, setEmail] = useState('')
-  const [pass, setPass] = useState('')
+const LoginForm = ({ componentNavigation }: any) => {
+  const [usernameField, setUsernameField] = useState('')
+  const [passwordField, setPasswordField] = useState('')
 
   const sendLogin = async () => {
-    // const url = `${baseUrl}/api/users/1`
-    // const res = await axios.get(url)
-    // console.log(res.data)
-    // navigation.navigate('Modal')
+    axios.post(loginUrl, {
+      username: usernameField,
+      password: passwordField
+    })
+      .then((response) => {
+        console.log(response)
+        componentNavigation.navigate('Home')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
-  const sendCreateAccount = async () => {
-    // BASIC
-    // const url = `${baseUrl}/api/users/1`
-    // const res = await axios.get(url)
-    // console.log(res.data)
-
-    // POST CALL
-    // axios.post('/user', {
-    //   firstName: 'Fred',
-    //   lastName: 'Flintstone'
-    // })
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-
-    // GET CALL
-    // axios.get('/user?ID=12345')
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+  const sendRegister = async () => {
+    axios.post(registerUrl, {
+      username: usernameField,
+      password: passwordField
+    })
+      .then((response) => {
+        console.log(response)
+        // TODO: Remember to let the user know they've successfully registered!!
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   return (
     <View style={styles.container}>
       <TextInput
-        label='Email'
-        value={email}
-        onChangeText={text => setEmail(text)}
-        autoComplete={'Email'}
+        label='Username'
+        value={usernameField}
+        onChangeText={text => setUsernameField(text)}
+        autoComplete={'username'}
       />
       <View style={styles.padding} />
       <TextInput
         label='Password'
-        value={pass}
-        onChangeText={text => setPass(text)}
-        autoComplete={'Password'}
+        value={passwordField}
+        onChangeText={text => setPasswordField(text)}
+        autoComplete={'password'}
         secureTextEntry={true}
       />
       <View style={styles.padding} />
@@ -68,9 +63,9 @@ const LoginForm = () => {
           onPress={async () => await sendLogin()}
         />
         <Button
-          children='Create Account'
+          children='Register'
           mode='outlined'
-          onPress={async () => await sendCreateAccount()}
+          onPress={async () => await sendRegister()}
         ></Button>
       </View>
     </View>
@@ -87,8 +82,7 @@ const styles = StyleSheet.create({
   },
   buttons: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
+    justifyContent: 'space-around',
   },
   padding: {
     // flex: 2,

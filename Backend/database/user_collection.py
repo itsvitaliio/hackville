@@ -14,7 +14,7 @@ class UserCollection:
     def return_collection(self):
         return self.collection
 
-    def create_user(self, user: User):
+    async def create_user(self, user: User):
         schema = {
             "username": user.get_username(),
             "password": user.get_password(),

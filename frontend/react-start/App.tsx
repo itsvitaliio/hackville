@@ -1,9 +1,11 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import UserForm from './components/LoginForm';
+import useCachedResources from './hooks/useCachedResources';
+import Navigation from './navigation';
+
 
 const theme = {
   ...DefaultTheme,
@@ -14,42 +16,28 @@ const theme = {
   },
 }
 
-const AppNav = createNativeStackNavigator()
-
-function MyStack() {
-  return (
-    <AppNav.Navigator>
-      <AppNav.Screen name="Home" component={Login} />
-      <AppNav.Screen name="Notifications" component={Notifications} />
-      <AppNav.Screen name="Profile" component={Profile} />
-      <AppNav.Screen name="Settings" component={Settings} />
-    </AppNav.Navigator>
-  );
-}
+// export default function App() {
+//   return (
+//     <PaperProvider theme={theme}>
+//       <LoginScreen />
+//     </PaperProvider>
+//   );
+// }
 
 export default function App() {
-  return (
-    <PaperProvider theme={theme}>
-      <View style={styles.container}>
-        <Text>Please sign into your RedCat account</Text>
-        <View style={styles.padding} />
-        <UserForm />
-        <StatusBar style="auto" />
-      </View>
-    </PaperProvider>
-  );
-}
+  const isLoadingComplete = useCachedResources()
+  // const colorScheme = useColorScheme();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  padding: {
-    marginVertical: 20,
-    height: 1,
-    width: '80%',
-  },
-});
+  if (!isLoadingComplete) {
+    return null
+  } else {
+    return (
+      <SafeAreaProvider>
+        <PaperProvider theme={theme}>
+          <Navigation />
+          <StatusBar />
+        </PaperProvider>
+      </SafeAreaProvider>
+    )
+  }
+}
