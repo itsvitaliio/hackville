@@ -43,6 +43,7 @@ const LoginForm = ({ componentNavigation }: any) => {
     <View style={styles.container}>
       <TextInput
         label='Username'
+        mode='flat'
         value={usernameField}
         onChangeText={text => setUsernameField(text)}
         autoComplete={'username'}
@@ -50,6 +51,7 @@ const LoginForm = ({ componentNavigation }: any) => {
       <View style={styles.padding} />
       <TextInput
         label='Password'
+        mode='flat'
         value={passwordField}
         onChangeText={text => setPasswordField(text)}
         autoComplete={'password'}
