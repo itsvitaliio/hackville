@@ -65,7 +65,8 @@ async def update_plan(request: Request):
 async def read_plans(request: Request):
     data = await request.json()
     username = data["username"]
-    return {"response": 200}
+    plans = await users.get_plan_entries(username)
+    return {"response": 200, "plans": plans}
 
 @app.post('/api/plan/delete')
 async def delete_plans(request: Request):
