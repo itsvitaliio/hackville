@@ -24,3 +24,10 @@ class PlanEntry():
             "type": self.type,
             "date": self.date
         })
+    
+    def to_string(self):
+        return {
+            "subject": self.subject,
+            "type": self.type,
+            "date": self.date
+        }

@@ -56,6 +56,7 @@ async def login(request: Request):
 async def add_plan(request: Request):
     data = await request.json()
     plan = PlanEntry(data["subject"], data["type"], data["date"])
+    print(plan.to_string())
     await users.add_plan_entry(data["username"], plan)
     return {'response': 200}
 
