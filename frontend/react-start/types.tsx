@@ -4,7 +4,7 @@ export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Login: undefined
   Home: undefined
-  Timeline: undefined
+  Plan: undefined
   Alan: undefined
   NotFound: undefined
 }

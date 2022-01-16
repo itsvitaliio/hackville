@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { TextInput, Button } from 'react-native-paper'
 import axios from 'axios'
+import { config } from '../global'
 
 const baseUrl = 'http://localhost:8000'
 const loginUrl = `${baseUrl}/api/login`
@@ -19,6 +20,8 @@ const LoginForm = ({ componentNavigation }: any) => {
       .then((response) => {
         console.log(response)
         componentNavigation.navigate('Home')
+        // TODO: Async update username info from JSON instead
+        config.username = usernameField
       })
       .catch((error) => {
         console.log(error)
