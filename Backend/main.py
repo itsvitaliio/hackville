@@ -12,6 +12,9 @@ app = FastAPI()
 db = Database()
 users: UserCollection = UserCollection(db.return_db())
 
+# CORS bypass in future version the backend will be put 
+# in docker container.
+# When that is done, delete starting here
 origins = ["*"]
 
 app.add_middleware(
@@ -21,11 +24,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# and ending here
 
+# route to test the backend in the browser
 @app.get('/')
 async def home():
     return {'response': 'success'}
 
+# router to register the user
 @app.post('/api/register')
 async def register(request: Request):
     data = await request.json()
@@ -33,6 +39,7 @@ async def register(request: Request):
     await users.create_user(user)
     return await request.json()
 
+# router to register the user
 @app.post('/api/login')
 async def login(request: Request):
     data = await request.json()
@@ -48,7 +55,8 @@ async def login(request: Request):
 @app.post('/api/plan/add')
 async def add_plan(request: Request):
     data = await request.json()
-    plan = PlanEntry(data["name"], data["description"], data["type"], data["date"])
+    plan = PlanEntry(data["subject"], data["type"], data["date"])
+    print(plan.to_string())
     await users.add_plan_entry(data["username"], plan)
     return {'response': 200}
 
@@ -57,7 +65,7 @@ async def update_plan(request: Request):
     data = await request.json()
     username = data["username"]
     index = data["index"]
-    plan = PlanEntry(data["name"], data["description"], data["type"], data["date"])
+    plan = PlanEntry(data["subject"], data["type"], data["date"])
     await users.update_plan_entry_name(index, username, plan)
     return {"response": 200}
 
