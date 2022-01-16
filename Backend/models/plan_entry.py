@@ -5,30 +5,22 @@ from typing import Optional
 
 
 class PlanEntry():
-    name: str
-    description: Optional[str] = None
-    date: datetime
+    subject: str
+    date: Optional[datetime] = None
     type: str    
     
-    def __init__(self, name: str, type: str):
-        self.name = name
+    def __init__(self, subject: str, type: str):
+        self.subject = subject
         self.type = type
-    
-    def __init__(self, name: str, description: str, type: str):
-        self.name = name
-        self.description = description
-        self.type = type
-    
-    def __init__(self, name: str, description: str, type: str, date: datetime):
-        self.name = name
-        self.description = description
+        
+    def __init__(self, subject: str, type: str, date: datetime):
+        self.subject = subject
         self.type = type
         self.date = date
     
     def get_json(self):
         return json.dumps({
-            "name": self.name,
-            "description": self.description,
+            "subject": self.subject,
             "type": self.type,
             "date": self.date
         })
