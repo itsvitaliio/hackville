@@ -1,48 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { View } from 'react-native'
-import Player from '../components/Player';
-
+import { View, Text, ImageBackground } from 'react-native'
+import { config } from '../global';
 
 function MusicScreen() {
-  const [songs] = useState([
-    {
-      title: "Calm Forest Sounds",
-      img_src: require("./images/forest.jpg"),
-      src: require("./music/forest.mp3")
-    },
-    {
-      title: "Calm Ocean Sounds",
-      img_src: require("./images/ocean.jpg"),
-      src: require("./music/ocean.mp3")
-    }
-  ]);
-
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
-  const [nextSongIndex, setNextSongIndex] = useState(0);
-
-  useEffect(() => {
-    setNextSongIndex(() => {
-      if (currentSongIndex + 1 > songs.length - 1) {
-        return 0;
-      }
-      else {
-        return currentSongIndex + 1;
-      }
-    });
-  }, [currentSongIndex]);
-
   return (
-    // <div className="App">
-    <View style={{flex: 1}}>
-      <Player
-        currentSongIndex={currentSongIndex}
-        setCurrentSongIndex={setCurrentSongIndex}
-        nextSongIndex={nextSongIndex}
-        songs={songs}
-      />
-    </View>
-    // </div>
-  )
+    <ImageBackground
+      style={{ flex: 1 }}
+      source={config.background}
+    >
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <iframe
+          src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM?utm_source=generator&theme=0"
+          width="400"
+          height="500"
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      </View>
+    </ImageBackground>
+  );
 }
 
 export default MusicScreen;

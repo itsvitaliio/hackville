@@ -1,6 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import PlayerDetails from './PlayerDetails';
 import PlayerControls from './PlayerControls';
+import { View, Text } from 'react-native';
 
 function Player(props: any) {
     const audioEl: any = useRef(null)
@@ -41,13 +42,13 @@ function Player(props: any) {
     }
 
     return (
-        <div className="c-player">
+        <View style={{alignItems: 'center'}}>
             <audio src={props.songs[props.currentSongIndex].src} ref={audioEl}></audio>
-            <h4>Playing now</h4>
+            <Text style={{fontSize: 20, paddingBottom: 10}}>Playing now</Text>
             <PlayerDetails song={props.songs[props.currentSongIndex]} />
             <PlayerControls isPlaying={isPlaying} setIsPlaying={setIsPlaying} SkipSong={SkipSong} />
-            <p>Next up: <span>{props.songs[props.nextSongIndex].title}</span></p>
-        </div>
+            <Text style={{padding: 5, fontSize: 16}}>Next up: <span>{props.songs[props.nextSongIndex].title}</span></Text>
+        </View>
     )
 }
 

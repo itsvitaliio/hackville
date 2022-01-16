@@ -1,14 +1,15 @@
 import React from 'react'
+import { View, Text } from 'react-native'
 
 function Playerdetails(props: any) {
     return (
-        <div className="c-player--details">
-            <div className="details-img">
+        <View>
+            <View>
                 <img src={props.song.img_src} alt="" />
-            </div>
-            <h3 className="details-title">{props.song.title}</h3>
-            <h4 className="details-artist">{props.song.artist}</h4>
-        </div>
+            </View>
+            <Text style={{fontWeight: 'bold', fontSize: 32, alignItems: 'center', padding: 10}}>{props.song.title}</Text>
+            <Text style={{fontSize: 16}}>{props.song.artist}</Text>
+        </View>
     )
 }
 
