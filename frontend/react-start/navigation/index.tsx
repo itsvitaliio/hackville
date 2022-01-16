@@ -9,6 +9,7 @@ import CalendarScreen from '../screens/CalendarScreen'
 import PlanScreen from '../screens/PlanScreen'
 // import { NotesScreen } from '../screens/NotesScreen'
 import MeditateScreen from '../screens/MeditateScreen'
+//import RemindersScreen from '../screens/RemindersScreen'
 import MusicScreen from '../screens/MusicScreen'
 
 import AlanScreen from '../screens/AlanScreen'
