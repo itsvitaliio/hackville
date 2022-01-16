@@ -64,14 +64,14 @@ const styles = StyleSheet.create({
   pressable: {
     flex: 1,
     // justifyContent: 'space-evenly',
-    marginHorizontal: 10,
-    marginVertical: 10,
+    marginHorizontal: 20,
+    marginVertical: 20,
     // maxWidth: 300
   },
   card: {
     flex: 1,
-    marginBottom: 25,
-    marginHorizontal: 20,
+    // marginBottom: 25,
+    // marginHorizontal: 20,
     // alignItems: 'center',
     // justifyContent: 'center',
     // maxWidth: 300,
@@ -79,6 +79,8 @@ const styles = StyleSheet.create({
   cardContent: {
     flex: 1,
     alignItems: 'center',
+    fontSize: 28,
+    fontFamily: 'lato',
     // justifyContent: 'center',
     minWidth: 150,
     // paddingTop: 25,
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
     // alignItems: 'stretch',
     justifyContent: 'space-between',
     marginHorizontal: '20%',
-    // minHeight: 200,
+    minHeight: 200,
     // maxWidth: '70%',
   }
   // text: {
