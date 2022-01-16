@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Calendar, momentLocalizer } from "react-big-calendar";
+import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from "moment";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 
-import "./App.css";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -51,23 +50,22 @@ class App extends Component {
     ],
   };
 
-  onEventResize = (data) => {
+  onEventResize = (data: any) => {
     const { start, end } = data;
 
-    this.setState((state) => {
+    this.setState((state: any) => {
       state.events[0].start = start;
       state.events[0].end = end;
       return { events: [...state.events] };
     });
   };
 
-  onEventDrop = (data) => {
+  onEventDrop = (data: any) => {
     console.log(data);
   };
 
   render() {
     return (
-      <div className="App">
         <DnDCalendar
           defaultDate={moment().toDate()}
           defaultView="month"
@@ -78,8 +76,7 @@ class App extends Component {
           resizable
           style={{ height: "100vh" }}
         />
-      </div>
-    );
+    )
   }
 }
 

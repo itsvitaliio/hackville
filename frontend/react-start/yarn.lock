@@ -1630,6 +1630,14 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
 
+"@types/react-big-calendar@^0.36.2":
+  version "0.36.2"
+  resolved "https://registry.yarnpkg.com/@types/react-big-calendar/-/react-big-calendar-0.36.2.tgz#7f706d42b89ef87a2643693d0dd754e718a33635"
+  integrity sha512-grXQJgeHWXhgcipRB28NnUwIhD6aAKFs7IacGwy2+33hC8yAcR62nsW73aa25K3qxU8RxoLflKSCrsm4QCQpuQ==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/react" "*"
+
 "@types/react-native@~0.64.12":
   version "0.64.21"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.64.21.tgz#f45aaac377ae2b2195e03597d4fd9fe366b2fcb5"
@@ -1667,6 +1675,11 @@
   integrity sha512-yEJzHoxf6SyQGhBhIYGXQDSCkJjB6HohDShto7m8vaKg9Yp0Yn8+71J9eakh2bnPg6BfsH9PRMhiRTZnd4eXGQ==
   dependencies:
     "@types/yargs-parser" "*"
+
+"@wiicamp/react-native-reminders@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@wiicamp/react-native-reminders/-/react-native-reminders-2.1.1.tgz#361d0e7607d510e8c493c41bb1dc06bcad1c682a"
+  integrity sha512-aJ74JvTF8JisEewKndabM2PnWT5F5BeiPOfT3pKMxw4s8odF7uXw+hV6TxRa6/mNqbKYDr8yjeAAvkPvSFET7A==
 
 "@xmldom/xmldom@~0.7.0":
   version "0.7.5"

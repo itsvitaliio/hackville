@@ -5,10 +5,13 @@ import { RootStackParamList } from '../types'
 import LinkingConfiguration from './LinkingConfiguration'
 import LoginScreen from '../screens/LoginScreen'
 import HomeScreen from '../screens/HomeScreen'
+import CalendarScreen from '../screens/CalendarScreen'
 import PlanScreen from '../screens/PlanScreen'
-import AlanScreen from '../screens/AlanScreen'
+import { NotesScreen } from '../screens/NotesScreen'
 import MeditateScreen from '../screens/MeditateScreen'
 import MusicScreen from '../screens/MusicScreen'
+
+import AlanScreen from '../screens/AlanScreen'
 
 
 const Navigation = () => {
@@ -28,7 +31,7 @@ const RootNavigator = () => {
     <Stack.Navigator initialRouteName='Login'>
       <Stack.Screen name='Login' component={LoginScreen} />
       <Stack.Screen name='Home' component={HomeScreen} />
-      {/* <Stack.Screen name='Calendar' component={CalendarScreen} /> */}
+      <Stack.Screen name='Calendar' component={CalendarScreen} />
       <Stack.Screen name='Plan' component={PlanScreen} />
       {/* <Stack.Screen name='Notes' component={NotesScreen} /> */}
       <Stack.Screen name='Meditate' component={MeditateScreen} />
