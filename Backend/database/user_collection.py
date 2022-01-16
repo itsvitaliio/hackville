@@ -40,7 +40,7 @@ class UserCollection:
         print("updated plan")
         print(plan)
     
-    def get_plan_entries(self, username):
+    async def get_plan_entries(self, username):
         return self.collection.find_one({"username": username}, {"_id": 0, "plan_entries": 1})
     
     async def delete_plan_entry(self, username: str, index: int):

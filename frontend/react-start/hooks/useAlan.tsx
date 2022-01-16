@@ -30,7 +30,7 @@ export default function useAlan(){
                     case COMMANDS.REMINDER:
                         console.log("ALAN TRIGGERED: Reminder command");
                         axios.post("http://localhost:8000/api/plan/add", {
-                            "username": "Dick",
+                            "username": "guest",
                             "subject": commandData.value.value,
                             "date": null,
                             "type": "reminder"
@@ -46,7 +46,7 @@ export default function useAlan(){
                     case COMMANDS.UPDATE_CLASS:
                         console.log("ALAN TRIGGERED: Update class command");
                         axios.post("http://localhost:8000/api/plan/add", {
-                            "username": "Dick",
+                            "username": "guest",
                             "subject": commandData.class,
                             "date": commandData.date.value,
                             "type": "schedule"
