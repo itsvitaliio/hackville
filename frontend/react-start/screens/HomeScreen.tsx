@@ -3,22 +3,23 @@ import { StatusBar } from 'expo-status-bar'
 import { SafeAreaView, StyleSheet, Text, Image, View, FlatList, Pressable, ImageBackground } from 'react-native'
 import { Card } from 'react-native-paper'
 
-const background = { uri: '' }
+import { config } from '../global'
+
 
 const items = [
-  { name: 'Calendar', redirect: 'Calendar', image: { uri: require('../assets/home-icons/calendar.png') } },
-  { name: 'Timeline', redirect: 'Plan', image: { uri: require('../assets/home-icons/arm.png') } },
-  { name: 'Study Notes', redirect: 'Notes', image: { uri: require('../assets/home-icons/book.png') } },
-  { name: 'Meditate', redirect: 'Meditate', image: { uri: require('../assets/home-icons/bot.png') } },
-  { name: 'Reminders', redirect: 'Remind', image: { uri: require('../assets/home-icons/clock.png') } },
-  { name: 'Music', redirect: 'Music', image: { uri: require('../assets/home-icons/headphones.png') } },
+  { name: 'Calendar', redirect: 'Calendar', image: { uri: require('../assets/home-cards-text/Calendar.png') } },
+  { name: 'Timeline', redirect: 'Plan', image: { uri: require('../assets/home-cards-text/Timeline.png') } },
+  { name: 'Study Notes', redirect: 'Notes', image: { uri: require('../assets/home-cards-text/Study_Notes.png') } },
+  { name: 'Meditate', redirect: 'Meditate', image: { uri: require('../assets/home-cards-text/Meditate.png') } },
+  { name: 'Reminders', redirect: 'Remind', image: { uri: require('../assets/home-cards-text/Reminders.png') } },
+  { name: 'Music', redirect: 'Music', image: { uri: require('../assets/home-cards-text/Music.png') } },
 ]
 
 const HomeScreen = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={background}
+        source={config.background}
       >
         <FlatList
           data={items}
@@ -28,15 +29,7 @@ const HomeScreen = ({ navigation }: any) => {
               style={styles.pressable}
               onPress={() => navigation.navigate(item.redirect)}
             >
-              <Card style={styles.card}>
-                <Card.Cover
-                  style={styles.cardCover}
-                  source={item.image}
-                />
-                <Card.Content style={styles.cardContent}>
-                  {item.name}
-                </Card.Content>
-              </Card>
+              <Image style={styles.image} source={item.image} />
             </Pressable>
           )}
           numColumns={2}
@@ -46,6 +39,39 @@ const HomeScreen = ({ navigation }: any) => {
     </SafeAreaView>
   )
 }
+
+// const HomeScreen = ({ navigation }: any) => {
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <ImageBackground
+//         source={config.background}
+//       >
+//         <FlatList
+//           data={items}
+//           contentContainerStyle={styles.flatList}
+//           renderItem={({ item }) => (
+//             <Pressable
+//               style={styles.pressable}
+//               onPress={() => navigation.navigate(item.redirect)}
+//             >
+//               <Card style={styles.card}>
+//                 <Card.Cover
+//                   style={styles.cardCover}
+//                   source={item.image}
+//                 />
+//                 <Card.Content style={styles.cardContent}>
+//                   {item.name}
+//                 </Card.Content>
+//               </Card>
+//             </Pressable>
+//           )}
+//           numColumns={2}
+//         // keyExtractor={(item, index) => index}
+//         />
+//       </ImageBackground>
+//     </SafeAreaView>
+//   )
+// }
 
 const styles = StyleSheet.create({
   container: {
@@ -64,9 +90,10 @@ const styles = StyleSheet.create({
   pressable: {
     flex: 1,
     // justifyContent: 'space-evenly',
-    marginHorizontal: 20,
-    marginVertical: 20,
-    // maxWidth: 300
+    // marginHorizontal: 10,
+    // marginVertical: 10,
+    width: 393,
+    height: 300,
   },
   card: {
     flex: 1,
@@ -75,6 +102,10 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
     // maxWidth: 300,
+  },
+  image: {
+    width: 393,
+    height: 300,
   },
   cardContent: {
     flex: 1,
@@ -90,7 +121,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // alignItems: 'stretch',
     justifyContent: 'space-between',
-    marginHorizontal: '20%',
+    marginHorizontal: '10%',
     minHeight: 200,
     // maxWidth: '70%',
   }

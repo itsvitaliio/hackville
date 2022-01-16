@@ -9,7 +9,12 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Login: 'login',
       Home: 'home',
-      Timeline: 'timeline',
+      Calendar: 'calendar',
+      Plan: 'plan',
+      Notes: 'notes',
+      Meditate: 'meditate',
+      Reminders: 'reminders',
+      Music: 'music',
       Alan: 'alan',
       NotFound: '*'
     },

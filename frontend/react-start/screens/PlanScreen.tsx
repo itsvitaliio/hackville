@@ -1,22 +1,28 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { ImageBackground, StyleSheet, Text, View } from 'react-native'
 
 import Plan from '../components/Plan'
+import { config } from '../global'
 
 const PlanScreen = () => {
   return (
-    <View style={styles.container}>
+    // <View style={styles.container}>
+    <ImageBackground
+      source={config.background}
+      style={styles.container}
+    >
       <Plan />
       <StatusBar style="auto" />
-    </View>
+    </ImageBackground>
+    // </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
