@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useFocusEffect } from '@react-navigation/native'
-import { View, StyleSheet } from 'react-native'
-import { TextInput, Button } from 'react-native-paper'
+import { View, StyleSheet, Text } from 'react-native'
+import { TextInput, Button, Title } from 'react-native-paper'
 import Timeline from 'react-native-timeline-flatlist'
 import axios from 'axios'
 
@@ -29,6 +29,9 @@ const Plan = () => {
 
   return (
     <View style={styles.container}>
+      <Title>
+        Test
+      </Title>
       <Timeline
         style={styles.list}
         data={planData}
@@ -50,8 +53,8 @@ const styles = StyleSheet.create({
     // flex: 1,
     // alignItems: 'center',
     // justifyContent: 'center',
-    width: 300,
-    maxWidth: '80%',
+    // width: 300,
+    // maxWidth: '80%',
   },
   buttons: {
     flexDirection: 'row',
