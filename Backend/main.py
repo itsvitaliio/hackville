@@ -55,7 +55,7 @@ async def login(request: Request):
 @app.post('/api/plan/add')
 async def add_plan(request: Request):
     data = await request.json()
-    plan = PlanEntry(data["name"], data["description"], data["type"], data["date"])
+    plan = PlanEntry(data["subject"], data["type"], data["date"])
     await users.add_plan_entry(data["username"], plan)
     return {'response': 200}
 
@@ -64,7 +64,7 @@ async def update_plan(request: Request):
     data = await request.json()
     username = data["username"]
     index = data["index"]
-    plan = PlanEntry(data["name"], data["description"], data["type"], data["date"])
+    plan = PlanEntry(data["subject"], data["type"], data["date"])
     await users.update_plan_entry_name(index, username, plan)
     return {"response": 200}
 
