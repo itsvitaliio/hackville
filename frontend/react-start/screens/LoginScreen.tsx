@@ -12,7 +12,7 @@ const LoginScreen = ({ navigation }: any) => {
         source={config.background}
         style={styles.container}
       >
-        <Text>Please sign into your RedCat account</Text>
+        <Text>Please sign into your Grit account</Text>
         <View style={styles.padding} />
         <LoginForm componentNavigation={navigation} />
         <StatusBar style="auto" />

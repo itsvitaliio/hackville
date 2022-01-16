@@ -7,7 +7,7 @@ import LoginScreen from '../screens/LoginScreen'
 import HomeScreen from '../screens/HomeScreen'
 import CalendarScreen from '../screens/CalendarScreen'
 import PlanScreen from '../screens/PlanScreen'
-import { NotesScreen } from '../screens/NotesScreen'
+// import { NotesScreen } from '../screens/NotesScreen'
 import MeditateScreen from '../screens/MeditateScreen'
 import MusicScreen from '../screens/MusicScreen'
 
@@ -16,9 +16,7 @@ import AlanScreen from '../screens/AlanScreen'
 
 const Navigation = () => {
   return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-    >
+    <NavigationContainer linking={LinkingConfiguration} >
       <RootNavigator />
     </NavigationContainer>
   )
