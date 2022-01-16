@@ -12,6 +12,9 @@ app = FastAPI()
 db = Database()
 users: UserCollection = UserCollection(db.return_db())
 
+# CORS bypass in future version the backend will be put 
+# in docker container.
+# When that is done, delete starting here
 origins = ["*"]
 
 app.add_middleware(
@@ -21,11 +24,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# and ending here
 
+# route to test the backend in the browser
 @app.get('/')
 async def home():
     return {'response': 'success'}
 
+# router to register the user
 @app.post('/api/register')
 async def register(request: Request):
     data = await request.json()
@@ -33,6 +39,7 @@ async def register(request: Request):
     await users.create_user(user)
     return await request.json()
 
+# router to register the user
 @app.post('/api/login')
 async def login(request: Request):
     data = await request.json()
